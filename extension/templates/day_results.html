@@ -37,6 +37,7 @@
                         <dt>{{{title}}}</dt>
                         <dd class='time'>{{time}}</dd>
                         <dd class='location'>{{host}}{{path}}</dd>
+                        <dd class='search_terms'>{{searchTerms}}</dd>
                       </dl>
                     </a>
                     <a class='search_domain action' href='#search/{{host}}'>{{i18n_search_by_domain}}</a>
@@ -53,6 +54,7 @@
                   <dt>{{{title}}}</dt>
                   <dd class='time'>{{time}}</dd>
                   <dd class='location'>{{host}}{{path}}</dd>
+                  <dd class='search_terms'>{{searchTerms}}</dd>
                 </dl>
               </a>
               <a class='search_domain action' href='#search/{{host}}'>{{i18n_search_by_domain}}</a>
@@ -64,6 +66,13 @@
     </li>
   {{/history}}
 </ol>
+<ul id='searchTerms'>
+  {{#visits}}
+  <li>{{searchTerms}}</li>
+  {{/visits}}
+</ul>
 {{^history}}
   <p>{{i18n_no_visits_found}}</p>
 {{/history}}
+
+

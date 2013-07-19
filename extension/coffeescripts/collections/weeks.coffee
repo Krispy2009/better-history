@@ -12,6 +12,7 @@ class BH.Collections.Weeks extends Backbone.Collection
       model.toTemplate()
 
     weeks: weeks
+    
 
   reload: (startingDay) ->
     @reset()

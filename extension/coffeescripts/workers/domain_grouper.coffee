@@ -35,7 +35,7 @@ class BH.Workers.DomainGrouper
   extractDomain: (visit) ->
     match = visit.url.match(/\/\/(.*?)\//)
     if match == null then null else match[0]
-
+  
 unless onServer?
   self.addEventListener 'message', (e) ->
     grouper = new BH.Workers.DomainGrouper()

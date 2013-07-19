@@ -277,3 +277,19 @@ header .corner {
   __MSG_@@bidi_start_edge__: auto;
   __MSG_@@bidi_end_edge__: 5px;
 }
+
+.mikrouli {
+  font-size: 0.6em;
+}
+.show{
+  display:block;
+}
+.hide{
+  display:none;
+}
+
+.tagcloud {
+  margin:0;
+  padding:0;
+  background-color: transparent;
+}

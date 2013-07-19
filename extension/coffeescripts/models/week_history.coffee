@@ -28,6 +28,7 @@ class BH.Models.WeekHistory extends BH.Models.History
         count: visits.length
         day: day
         percentage: "#{@dayVisitPercentage day}%"
+        searchTerms: visits
 
   sod: ->
     new Date(@get('startDate').sod()).getTime()

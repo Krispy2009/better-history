@@ -17,6 +17,7 @@ class BH.Models.Week extends Backbone.Model
       title: day.format('dddd')
       inFuture: moment() < day
       url: @urlFor('day', day.id())
+      searchTerms: "hi"
 
     copy =
       shortTitle: @get('date').format('L')

@@ -3,6 +3,17 @@
     <li class='week' data-week-id='{{id}}'>
       <a href='{{url}}'>
         {{{shortTitle}}}
+        <ol class='days hide'>
+   		 {{#days}}
+      		<li class='day' data-day='{{day}}'>
+        	<a href='{{url}}'>
+       	 		<div class='label'>
+         			<h3 class='title mikrouli'>{{title}} </h3>
+          		</div>
+       		</a>
+      		</li>
+    		{{/days}}
+  		</ol>
       </a>
     </li>
   {{/weeks}}

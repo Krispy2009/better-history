@@ -34,12 +34,30 @@ class BH.Views.WeekView extends BH.Views.MainView
     history = @history.toTemplate()
     for day in history.days
       container = @$("[data-day=#{day.day}]")
+      container.attr "rel", "tag"
+      console.log(history)
+      container.attr "data-weight", day.count
+      container.addClass "tagcloud"
+      container
       container.find(".label .count").html @t('number_of_visits', [day.count])
       container.find('.bar').css width: day.percentage
+      # $.fn.tagcloud.defaults =
+      # size:
+      #  start: 1
+      #  end: 4
+      #  unit: "em"
+
+      # color:
+      #  start: "#cde"
+      #  end: "#f52"
+
+      # $ ->
+      #   $("li.day").tagcloud()
 
     @$('.controls .count').html @t('number_of_visits', [history.total])
     @assignTabIndices('.day a')
     @$el.addClass('loaded')
+
 
   promptToDeleteAllVisits: ->
     promptMessage = @t('confirm_delete_all_visits', [@model.toTemplate().title])

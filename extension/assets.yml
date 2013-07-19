@@ -12,6 +12,7 @@
  - modules/*
  - lib/date_i18n
  - lib/history_query
+ - lib/zepto
  - views/modal_view
  - views/main_view
  - views/*

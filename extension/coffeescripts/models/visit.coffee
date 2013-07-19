@@ -20,6 +20,7 @@ class BH.Models.Visit extends Backbone.Model
       isGrouped: false
       host: @domain()
       path: @path()
+      searchTerms: @findSearchTerms()
     , @toJSON()
 
   domain: ->
@@ -32,3 +33,12 @@ class BH.Models.Visit extends Backbone.Model
 
   _getDomain: (url) ->
     url.match(/\w+:\/\/(.*?)\//)
+
+  findSearchTerms: () ->
+    url = @get('url')
+    if url.indexOf("www.google") isnt -1 and url.indexOf("/search?q") isnt -1
+      q = url.split("&")
+      q = q[0].split("=")
+      q = q[1].split("+").join(" ")
+      q
+
