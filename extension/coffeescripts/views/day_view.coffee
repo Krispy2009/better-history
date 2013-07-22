@@ -1,8 +1,7 @@
 class BH.Views.DayView extends BH.Views.MainView
   @include BH.Modules.I18n
-
+  
   template: BH.Templates['day']
-
   className: 'day_view with_controls'
 
   events:

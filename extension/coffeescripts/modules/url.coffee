@@ -14,5 +14,7 @@ BH.Modules.Url =
           "#weeks/#{id}"
         when 'day'
           "#days/#{id}"
+        when 'tag'
+          "#tag/#{id}"
 
     "#{buildBase(opts)}#{route}"

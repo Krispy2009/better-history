@@ -801,6 +801,8 @@ BH.Base.include = Module.include;
             return "#weeks/" + id;
           case 'day':
             return "#days/" + id;
+          case 'tag':
+            return "#tag/" + id;
         }
       })();
       return "" + (buildBase(opts)) + route;

@@ -1,6 +1,6 @@
 class BH.Views.WeekView extends BH.Views.MainView
   @include BH.Modules.I18n
-
+ 
   template: BH.Templates['week']
 
   className: 'week_view with_controls'

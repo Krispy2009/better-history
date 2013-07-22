@@ -16,8 +16,10 @@
     "default_icon": "images/icons/icon19.png",
     "default_title": "__MSG_manifest_browser_action_title__"
   },
+
+
   "background": {
-    "scripts": ["javascripts/generated_background.js"],
+    "scripts": ["javascripts/generated_background.js" ],
     "persistent": false
   },
   "permissions": [
@@ -26,5 +28,5 @@
     "tabs",
     "contextMenus"
   ],
-  "content_security_policy": "script-src 'self' https://platform.twitter.com https://apis.google.com; object-src 'self'"
+  "content_security_policy": "script-src 'self' 'unsafe-eval' https://platform.twitter.com https://apis.google.com; object-src 'self'"
 }

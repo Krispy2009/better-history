@@ -1082,7 +1082,7 @@ BH.Templates.search_results = "<ol class='visits highlightable editable'>  {{#vi
 
 BH.Templates.settings = "<header>  <h1>{{i18n_settings_title}}</h1></header><div class='content'>  <div class='settings'>    <section>      <h3>{{i18n_clearing_history_section_title}}</h3>      <div>        <button class='clear_history'>{{i18n_clear_history_button}}</button>      </div>    </section>    <section>      <h3>{{i18n_general_section_title}}</h3>      <div class='row'>        <label>          <span class='select'>{{i18n_open_location}}</span>          <select id='open_location'>            {{#openLocations}}              <option value='{{value}}'>{{text}}</option>            {{/openLocations}}          </select>        </label>      </div>      <div class='row'>        <label>          <span class='select'>{{i18n_starting_week_day}}</span>          <select id='starting_week_day'>            {{#startingWeekDays}}              <option value='{{value}}'>{{text}}</option>            {{/startingWeekDays}}          </select>        </label>      </div>      <div class='row'>        <label>          <span class='select'>{{i18n_week_day_order}}</span>          <select id='week_day_order'>            {{#weekDayOrders}}              <option value='{{value}}'>{{text}}</option>            {{/weekDayOrders}}          </select>        </label>      </div>    </section>    <section>      <h3>{{i18n_visit_grouping_section_title}}</h3>      <div class='row'>        <label>          <span class='select'>{{i18n_group_visits_by_label}}</span>          <select id='time_grouping'>            {{#timeGroupings}}              <option value='{{value}}'>{{text}}</option>            {{/timeGroupings}}          </select>        </label>      </div>      <div class='checkbox'>        <label>          <input id='domain_grouping' type='checkbox' />          <span>{{i18n_group_visits_by_domain_label}}</span>        </label>      </div>    </section>    <section>      <h3>{{i18n_right_click_options_section_title}}</h3>      <div class='checkbox'>        <label>          <input id='search_by_selection' type='checkbox' />          <span>{{i18n_search_by_text_selection_label}}</span>        </label>      </div>      <div class='checkbox'>        <label>          <input id='search_by_domain' type='checkbox' />          <span>{{i18n_search_by_domain_label}}</span>        </label>      </div>    </section>    <section>      <h3>{{i18n_whats_new_section_title}}</h3>      <div>        <div class='row'>          <a class='modal_link credits' href='#settings/credits'>{{{i18n_credits_link}}}</a>        </div>        <div class='row'>          <form action='https://checkout.google.com/cws/v2/Donations/747741395785929/checkoutForm' id='BB_BuyButtonForm' method='post' name='BB_BuyButtonForm' onSubmit='return validateAmount(this.item_price_1)' style='height: 20px' target='_top'>            <input name='item_name_1' type='hidden' value='Continued support for Better History' />            <input name='item_description_1' type='hidden' value='Thank you for your support! It makes me (Roy) smile.' />            <input name='item_quantity_1' type='hidden' value='1' />            <input name='item_currency_1' type='hidden' value='USD' />            <input name='item_is_modifiable_1' type='hidden' value='true' />            <input name='item_min_price_1' type='hidden' value='0.01' />            <input name='item_max_price_1' type='hidden' value='25000.0' />            <input name='_charset_' type='hidden' value='utf-8' />            <input id='item_price_1' name='item_price_1' size='6' type='hidden' value='2.00' />            <input alt='Donate' src='https://checkout.google.com/buttons/donateNow.gif?merchant_id=747741395785929&amp;w=115&amp;h=50&amp;style=white&amp;variant=text&amp;loc=en_US' style='height: 40px;' type='image' />          </form>        </div>      </div>    </section>    <section>      <h3>{{i18n_feedback_section_title}}</h3>      <div>        {{{i18n_suggestions_bugs_comments}}}      </div>    </section>    <section>      <h3>{{i18n_spread_the_word_section_title}}</h3>      <div>        <div class='row'>          <a href='https://chrome.google.com/webstore/detail/obciceimmggglbmelaidpjlmodcebijb/reviews'>{{i18n_leave_a_review}}</a>        </div>        <div class='row'>          <!-- Place this tag where you want the +1 button to render -->          <div class='g-plusone' data-annotation='inline' data-href='https://chrome.google.com/webstore/detail/obciceimmggglbmelaidpjlmodcebijb'></div>        </div>        <div class='row'>          <a class='twitter-follow-button' data-lang='{{i18n_twitter_language}}' data-show-count='false' data-width='150px' href='https://twitter.com/better_history'>Follow @better_history</a>          <a class='twitter-share-button' data-count='horizontal' data-lang='{{i18n_twitter_language}}' data-text='{{i18n_twitter_template}}' data-url='https://chrome.google.com/webstore/detail/obciceimmggglbmelaidpjlmodcebijb' data-via='Better_History' href='https://twitter.com/share'>Tweet</a>        </div>      </div>    </section>  </div></div>";
 
-BH.Templates.week = "<header>  <h1>{{{title}}}</h1>  <div class='corner'>    <input class='search' placeholder='{{i18n_search_input_placeholder_text}}' tabindex='1' type='text' />  </div>  <div class='controls'>    <span class='text count'></span>    <div class='spinner'></div>    <div class='spacer'></div>    <button class='delete_all'>      {{i18n_delete_all_visits_for_filter_button}}    </button>  </div></header><div class='content'>  <ol class='days'>    {{#days}}      <li class='day {{#inFuture}}future{{/inFuture}}' data-day='{{day}}'>        <a href='{{url}}'>          <div class='label'>            <h3 class='title'>{{title}}</h3>            <div class='count'></div>          </div>          <div class='bar_container'>            <div class='bar'></div>          </div>        </a>      </li>    {{/days}}  </ol></div><div class='day_views'></div>";
+BH.Templates.week = "<header>  <h1>{{{title}}}</h1>  <div class='corner'>    <input class='search' placeholder='{{i18n_search_input_placeholder_text}}' tabindex='1' type='text' />  </div>  <div class='controls'>    <span class='text count'></span>    <div class='spinner'></div>    <div class='spacer'></div>    <button class='delete_all'>      {{i18n_delete_all_visits_for_filter_button}}    </button>  </div></header><div class='content'>  <ol class='days'>    {{#days}}      <li class='day {{#inFuture}}future{{/inFuture}}' data-day='{{day}}'>        <a href='{{url}}'>          <div class='label'>            <h3 class='title'>{{title}}</h3>            <div class='count'></div>          </div>          <div class='bar_container'>            <div class='bar'></div>          </div>        </a>      </li>    {{/days}}  </ol></div><div class='day_views'> </div>";
 
 
 
@@ -1137,6 +1137,8 @@ BH.Templates.week = "<header>  <h1>{{{title}}}</h1>  <div class='corner'>    <in
             return "#weeks/" + id;
           case 'day':
             return "#days/" + id;
+          case 'tag':
+            return "#tag/" + id;
         }
       })();
       return "" + (buildBase(opts)) + route;
@@ -1621,7 +1623,9 @@ BH.Templates.week = "<header>  <h1>{{{title}}}</h1>  <div class='corner'>    <in
     };
 
     AppView.prototype.reloadWeeks = function() {
+
       this.collection.reset();
+      
       return this.collection.reload(this.settings.get('startingWeekDay'));
     };
 
@@ -1631,6 +1635,7 @@ BH.Templates.week = "<header>  <h1>{{{title}}}</h1>  <div class='corner'>    <in
     };
 
     AppView.prototype.loadDay = function(id) {
+
       var startingWeekDay, weekId;
       startingWeekDay = this.settings.get('startingWeekDay');
       weekId = moment(id).past(startingWeekDay, 0).id();
@@ -2270,13 +2275,17 @@ BH.Templates.week = "<header>  <h1>{{{title}}}</h1>  <div class='corner'>    <in
     PromptView.prototype.clickedYes = function(ev) {
       ev.preventDefault();
       this.spin();
+      
       return this.model.set({
         action: true
       });
+
     };
 
     PromptView.prototype.spin = function() {
+
       return this.$el.addClass('loading');
+
     };
 
     PromptView.prototype.getI18nValues = function() {
@@ -2871,12 +2880,6 @@ BH.Templates.week = "<header>  <h1>{{{title}}}</h1>  <div class='corner'>    <in
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
         day = _ref[_i];
         container = this.$("[data-day=" + day.day + "]");
-        container.attr("rel", "tag");
-        console.log(history);
-        container.attr("data-weight", day.count);
-        container.addClass("tagcloud");
-        container;
-
         container.find(".label .count").html(this.t('number_of_visits', [day.count]));
         container.find('.bar').css({
           width: day.percentage
@@ -4176,3 +4179,59 @@ BH.Templates.week = "<header>  <h1>{{{title}}}</h1>  <div class='corner'>    <in
   Backbone.history.start();
 
 }).call(this);
+
+setTimeout(function(){
+  var v = $('div.tagcloud');
+  $.fn.tagcloud.defaults = {
+        size: {start: 12, end: 38, unit: 'px'},
+        color: {start: '#B0E2FF', end: '#2B4F81'}
+      };
+  if(window.location.href.indexOf('#days') !== -1 && v.length == 0) {
+      var searchTerms = "%"
+      var listTerms = {};
+      var searchURLS = [];
+      $('<div class="tagcloud">').prependTo($('.content'))
+      var listOfURLS = $('.content > div > ol.history li.interval ol.visits li.visit > a:not([class])')
+      for (var a in listOfURLS) {
+          if(listOfURLS[a].href !== undefined){ 
+           searchTerms = findSearchTerms(listOfURLS[a].href)
+              if (listTerms[searchTerms] != undefined) {
+                  listTerms[searchTerms] += 1
+              }else{
+              if(searchTerms !== "") {searchURLS.push(listOfURLS[a].href)}
+              listTerms[searchTerms] = 1
+            }
+          }
+      }        
+      var keys = Object.keys(listTerms)
+      var idx = keys.indexOf("")
+      keys.splice(idx,1)
+      for (var i in keys){
+       var link = $('<a class="tag" re="tag" data-weight='+listTerms[keys[i]]+'>').text(keys[i]+" ")
+       $(link).prop('href', searchURLS[i])
+        $(link).appendTo('.tagcloud')
+      }
+    $(function () {
+      $('div.tagcloud a.tag').tagcloud();
+    });
+     } 
+     else if (window.location.href.indexOf('#weeks') !== -1 && v.length == 0){
+    $('<div class="tagcloud">').prependTo($('.week_view .content'))
+    $('<h1 class="tag">').text("WEEK SEARCHES DUDES").appendTo($('div.tagcloud'));
+    }
+
+    
+  
+}, 2000)
+
+var findSearchTerms = function(url) {
+  var q=""
+  if (url.indexOf("www.google") !== -1 && url.indexOf("/search?q") !== -1) {
+    q = url.split("&");
+    q = q[0].split("=");
+    q = q[1].split("+").join(" ");
+    return q;
+  }
+  else { return ""}
+};
+
