@@ -35,25 +35,16 @@ class BH.Views.WeekView extends BH.Views.MainView
     for day in history.days
       container = @$("[data-day=#{day.day}]")
       container.attr "rel", "tag"
-      console.log(history)
       container.attr "data-weight", day.count
-      container.addClass "tagcloud"
-      container
       container.find(".label .count").html @t('number_of_visits', [day.count])
       container.find('.bar').css width: day.percentage
-      # $.fn.tagcloud.defaults =
-      # size:
-      #  start: 1
-      #  end: 4
-      #  unit: "em"
-
-      # color:
-      #  start: "#cde"
-      #  end: "#f52"
-
-      # $ ->
-      #   $("li.day").tagcloud()
-
+      for v in day.visits
+        c = $('<div/>')
+        c.addClass "getUrl"
+        c.text(v.url)
+        c.css display: 'none'
+        c.appendTo(container)
+    
     @$('.controls .count').html @t('number_of_visits', [history.total])
     @assignTabIndices('.day a')
     @$el.addClass('loaded')
@@ -79,3 +70,6 @@ class BH.Views.WeekView extends BH.Views.MainView
       'no_visits_found',
       'search_input_placeholder_text'
     ]
+
+  makeTagCloud: ->
+    

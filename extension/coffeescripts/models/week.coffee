@@ -6,6 +6,13 @@ class BH.Models.Week extends Backbone.Model
     @chromeAPI = chrome
     @settings = options.settings
     @set id: @get('date').id()
+    @historyQuery = new BH.Lib.HistoryQuery(@chromeAPI)
+
+  sync: (method, model, options) ->
+    switch method
+      when 'read'
+        @historyQuery.run @toChrome(), (results) =>
+          @preparse(results, options.success)
 
   toHistory: ->
     startDate: @get 'date'
@@ -17,7 +24,7 @@ class BH.Models.Week extends Backbone.Model
       title: day.format('dddd')
       inFuture: moment() < day
       url: @urlFor('day', day.id())
-      searchTerms: "hi"
+      visits: @getVisits(day)
 
     copy =
       shortTitle: @get('date').format('L')
@@ -27,6 +34,21 @@ class BH.Models.Week extends Backbone.Model
       ])
 
     _.extend copy, @toJSON(), days: days
+
+  preparse: (results, callback) ->
+    @worker 'dayGrouper', visits: results, (history) ->
+      callback history
+
+  parse: (data) ->
+    history: data
+
+  getVisits: (day) ->
+    for day, visits of @get('history')
+      visits if visits?
+  
+  dayVisits: ->
+    for day, visits of @get('history')
+      visits.length if visits?
 
   inflateDays: ->
     days = for i in [0..6]
