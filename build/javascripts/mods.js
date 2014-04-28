@@ -1,14 +1,18 @@
-//check to see if location has changed. If it did, then reload the page to reload the tag cloud
-$('li').click(function(){
-  var loc = $(this).children()[0]
-  if(loc.href != window.location){
-    window.location = loc.href
-    setTimeout(function() {window.location.reload()}, 1000)
-  }
+
+$('li a').click(function(){
+  console.log("hi?")
+  $('.tagcloud').remove();
+  console.log($('.tagcloud'))
+  setTimeout(makeTagCloud(), 2000);
+    console.log("supposedly made tag cloud")
+      console.log($('.tagcloud'))
+
+   // setTimeout(function() {window.location.reload()}, 1000)
+  
 });
-setTimeout(function(){
+
   
-  
+  var makeTagCloud = function(){
   $.fn.tagcloud.defaults = {
         size: {start: 12, end: 38, unit: 'px'},
         color: {start: '#B0E2FF', end: '#2B4F81'}
@@ -43,7 +47,7 @@ setTimeout(function(){
 
      } 
      else if (window.location.href.indexOf('#weeks') !== -1){
-    $('<div class="tagcloud">').prependTo($('.week_view .content'))
+    $('<div class="tagcloud">').prependTo($('.selected .content'))
       listOfURLS = $('.getUrl')
       searchURLS = []
       listTerms = {}
@@ -74,43 +78,58 @@ setTimeout(function(){
     $(function () {
       $('div.tagcloud a.tag').tagcloud();
     });
- 
-}, 2000);
+ }
+
 
 var findSearchTerms = function(url) {
   var q=""
   if (url.indexOf("www.google.") !== -1 && url.indexOf("/search?q") !== -1) {
     url = url.split("/search?q=")
-    q = checkQuery(url[1]).split("+").join(" ");
+    url = "?q="+url[1]
+
+    q = checkQuery(url).split("+").join(" ");
     return decodeURIComponent(q);
   }
   else { return ""}
 };
 
 var checkQuery = function(q){
+  console.log(q)
   count_q = countOccurences(q,"&q=") +1
   count_oq = countOccurences(q,"&oq=")
-  var q1 = q.indexOf("q=")
-  var oq1 = q.indexOf("oq=")
-
-  if(count_q > 1 && count_oq > 1) {
-    var q2 = q.indexOf("q=",q1+1)
-    var oq2 = q.indexOf("oq=",oq1+1)
+  var q1 = q.indexOf("?q=")
+  var oq1 = q.indexOf("&oq=")
+  console.log(q1, oq1)
+  console.log("counts: ",count_q, count_oq)
+  if(count_q > 1 && count_oq >= 1) {
+    var q2 = q.indexOf("&q=",q1+3)
+    var oq2 = q.indexOf("&oq=",oq1+3)
+    console.log("Second qs: ",q2,oq2)
     //if there exists a second pair of q and oq, then the query was re-requested, and
     //the terms might have changed, so we collect the second ones. (this is because 
     // the user would most probably focus their search more the second time around.)
-    if (q2 !== -1 && oq2 !== -1){
-      q = q.slice(oq2)
-      return q.split("&",q2+1)[0].split("=")[1]
+    if (q2 !== -1 || (q2!== -1 && oq2 !== -1)){
+      q = q.slice(q2)
+      console.log("There is a second q")
+      //console.log("the q is : ", q)
+      console.log(q.split("&q=",q2+1))
+      return q.split("&q=",q2+1)[0]
     } else {
-      return q.split("&", q2+1)[0].split("=")[1]
+      console.log(q.split("&", q2+1))
+      return q.split("&", q2+1)[0]
     }
-  } 
-  if(q[q2] !== -1 || (q[q1] !== q[q2] && q[q2] === q[oq1])){
-    return q.split("&",q2)[0]
-  } else {
-    return q.split("&",q1)[0]
-  }
+   console.log(q2)
+}
+    if(q[q2] !== -1 || (q[q1] !== q[q2] && q[q2] === q[oq1])){
+      console.log(q.split("&q="))
+      console.log(q.split("&"))
+      q = q.split("&q=")[1]
+
+      return q.split("&",q2)[0]
+    } else {
+      return q.split("&",q1)[0]
+    }
+
   
 };
 
@@ -128,3 +147,4 @@ var countOccurences = function(string, subString, allowOverlapping){
     }
     return(n);
 }
+

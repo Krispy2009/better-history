@@ -295,7 +295,7 @@ header .corner {
 }
 
 .tag {
-  padding: 5px;
+  padding: 5px 10px 5px 5px;
   color: white;
   font-size: 1.3em;
 }
